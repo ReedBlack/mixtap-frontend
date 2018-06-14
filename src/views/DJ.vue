@@ -1,22 +1,47 @@
 <template>
     <div>
         <img class="logo-dj" src="logo.png" alt="">
-        <audio-player :sources="audioSources" :loop="false"></audio-player>
+        <button type="button" @click.prevent="toggleForm">Add a mix</button> 
+        <AddMix :addMix="addMix" :mixes="mixes" v-show="displayForm"/>
+        <PlayerSection :mixes="mixes" :mix="mix" ></PlayerSection>
     </div>
 </template>
 
 <script>
 import AudioPlayer from "@/components/audio-player.vue";
+import AddMix from "@/components/AddMix.vue";
+import PlayerSection from "@/components/PlayerSection.vue";
 
 export default {
   name: "dj",
   components: {
-    AudioPlayer
+    AudioPlayer,
+    PlayerSection,
+    AddMix
   },
   data() {
     return {
-      audioSources: ["/testfile.mp3"]
+      audioSources: ["/testfile.mp3"],
+      displayForm: false,
+      mixes: [],
+      API_URL: "https://mixtap.herokuapp.com/mixes/"
     };
+  },
+  methods: {
+    addMix(mix) {
+      this.mixes.unshift(mix);
+    },
+    toggleForm() {
+      this.displayForm = !this.displayForm;
+    }
+  },
+  async mounted() {
+    fetch(this.API_URL)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.mixes = res;
+      });
   }
 };
 </script>

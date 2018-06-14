@@ -1,24 +1,26 @@
 
 <template>
-  <div class="player">
-    <div>
-      <h1>Yeah Right</h1>
-      <h2>Vince Staples- test track</h2>
+  <div>
+    <li class="player" :mixes="mixes" :mix="mix" :key="mix.DJ">
+      <h1>{{mix.DJ}}</h1>
+      <h2>{{mix.Title}}</h2>
       <span>Total duration: {{ (duration / 60).toFixed(2) }} minutes </span>
       <button @click="togglePlayback">{{ playing ? 'Pause' : 'Play' }}</button>
       <button @click="stop">Stop</button>
+    
+    <div>
+        <loading-progress
+        :progress="progress"
+        rotationDuration="1"
+        shape="M50,3l12,36h38l-30,22l11,36l-31-21l-31,21l11-36l-30-22h38z"
+        size="100">
+        </loading-progress>
     </div>
-   <div>
-      <loading-progress
-      :progress="progress"
-      rotationDuration="1"
-      shape="M50,3l12,36h38l-30,22l11,36l-31-21l-31,21l11-36l-30-22h38z"
-      size="100">
-      </loading-progress>
-   </div>
+   </li>
   </div>
 </template> 
 <script>
+import AudioPlayer from "@/components/audio-player.vue";
 import VueProgress from "vue-progress-path";
 import VueHowler from "vue-howler";
 
@@ -27,21 +29,10 @@ export default {
   mixins: [VueHowler],
   components: {
     VueProgress,
-    VueHowler
+    VueHowler,
+    AudioPlayer
   },
-  data() {
-    return {
-      fill: { gradient: ["red", "green", "blue"] }
-    };
-  },
-  methods: {
-    progress(event, progress, stepValue) {
-      console.log(stepValue);
-    },
-    progress_end(event) {
-      console.log("Circle progress end");
-    }
-  }
+  props: ["submitMix", "mixtables", "mixes", "mix"]
 };
 </script>
 
@@ -64,11 +55,11 @@ export default {
   justify-content: space-between;
   border: 2px solid gray;
   margin-top: -3%;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 1%;
   width: 78%;
   margin-left: 10px;
-  margin-bottom: 30%;
+  margin: 10px;
   background: #fef6fe; /* Old browsers */
   background: -moz-linear-gradient(
     -45deg,
