@@ -3,7 +3,7 @@
         <img class="logo-dj" src="logo.png" alt="">
         <button type="button" @click.prevent="toggleForm">Add a mix</button> 
         <AddMix :addMix="addMix" :mixes="mixes" v-show="displayForm"/>
-        <PlayerSection :mixes="mixes" :mix="mix" ></PlayerSection>
+        <PlayerSection :mixes="mixes" :mix="mix"></PlayerSection>
     </div>
 </template>
 
@@ -21,7 +21,6 @@ export default {
   },
   data() {
     return {
-      audioSources: ["/testfile.mp3"],
       displayForm: false,
       mixes: [],
       API_URL: "https://mixtap.herokuapp.com/mixes/"
@@ -29,7 +28,8 @@ export default {
   },
   methods: {
     addMix(mix) {
-      this.mixes.unshift(mix);
+      console.log(this.mixes);
+      this.mixes.mixtables.unshift(mix);
     },
     toggleForm() {
       this.displayForm = !this.displayForm;

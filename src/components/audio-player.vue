@@ -1,12 +1,13 @@
 
 <template>
   <div>
-    <li class="player" :mixes="mixes" :mix="mix" :key="mix.DJ">
+    <li class="player" :sources="currentMix" :mixes="mixes" :mix="mix" :key="mix.DJ">
       <h1>{{mix.DJ}}</h1>
       <h2>{{mix.Title}}</h2>
       <span>Total duration: {{ (duration / 60).toFixed(2) }} minutes </span>
       <button @click="togglePlayback">{{ playing ? 'Pause' : 'Play' }}</button>
       <button @click="stop">Stop</button>
+      <button @click="deleteMix()">Delete Mix</button>
     
     <div>
         <loading-progress
@@ -32,7 +33,24 @@ export default {
     VueHowler,
     AudioPlayer
   },
-  props: ["submitMix", "mixtables", "mixes", "mix"]
+  props: ["submitMix", "sources", "audioSources", "mixtables", "mixes", "mix"],
+  data() {
+    return {
+      API_URL_DELETE: `https://mixtap.herokuapp.com/mixes/${this.mix.id}`
+    };
+  },
+  methods: {
+    deleteMix() {
+      return fetch(this.API_URL_DELETE, {
+        headers: {
+          "content-type": "application/json",
+          mode: "cors",
+          cache: "default"
+        },
+        method: "DELETE"
+      });
+    }
+  }
 };
 </script>
 

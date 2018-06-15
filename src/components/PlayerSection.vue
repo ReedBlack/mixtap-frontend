@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      audioSources: ["/testfile.mp3"]
+      audioSources: []
     };
   },
 

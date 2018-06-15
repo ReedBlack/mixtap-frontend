@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "jquery-circle-progress": "^1.2.2",
     "jquery-easing": "0.0.1",
     "vue": "^2.5.16",
