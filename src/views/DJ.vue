@@ -1,14 +1,26 @@
 <template>
     <div>
-        <img class="logo-dj" src="logo.png" alt="">
-        <button type="button" @click.prevent="toggleForm">Add a mix</button> 
-        <AddMix :addMix="addMix" :mixes="mixes" v-show="displayForm"/>
-        <PlayerSection :mixes="mixes" :mix="mix"></PlayerSection>
+      <header>
+        <h1 class="dj">dj</h1>
+      </header>
+      <nav class="nav">
+        <div class="links one">
+          <router-link class="link-text" to="/">Home</router-link> 
+        </div>
+        <div class="links two">
+          <router-link class="link-text" to="/partypeople">Party People</router-link> 
+        </div>
+          <a type="link" class="links link-text" @click.prevent="toggleForm">Add a Mix</a> 
+        <div class="add-mix-section">
+          <AddMix class="mixform" :addMix="addMix" :mixes="mixes" v-show="displayForm"/>
+        </div>
+      </nav>
+        <PlayerSection :mixes="mixes" ></PlayerSection>
     </div>
 </template>
 
 <script>
-import AudioPlayer from "@/components/audio-player.vue";
+import AudioPlayer from "@/components/AudioPlayer.vue";
 import AddMix from "@/components/AddMix.vue";
 import PlayerSection from "@/components/PlayerSection.vue";
 
@@ -47,10 +59,25 @@ export default {
 </script>
 
 <style>
-.logo-dj {
-  position: relative;
-  z-index: -1;
+.add-mix {
+  width: 90px;
+}
+.mixform {
   margin-top: -15%;
-  margin-left: -15%;
+  margin-left: 25%;
+}
+
+.dj {
+  font-family: "Mr Dafoe", cursive;
+  font-size: 14vh;
+  text-shadow: 3px 2px 2px hsl(318, 100%, 89%);
+  position: relative;
+  float: right;
+  margin-right: 10%;
+}
+@media only screen and (max-width: 600px) {
+  .add-mix-section {
+    margin-top: 15%;
+  }
 }
 </style>

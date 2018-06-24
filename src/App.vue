@@ -5,6 +5,9 @@
 </template>
 
 <style>
+ul {
+  padding-left: 0;
+}
 @media only screen and (max-width: 600px) {
   .home-logo {
     margin-left: -10%;
@@ -18,6 +21,10 @@
 }
 #nav {
   padding: 30px;
+}
+
+.nav {
+  font-size: 3vh;
 }
 
 #nav a {

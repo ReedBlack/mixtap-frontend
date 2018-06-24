@@ -4,21 +4,23 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "bootstrap-vue": "^2.0.0-rc.11",
     "jquery-circle-progress": "^1.2.2",
     "jquery-easing": "0.0.1",
     "vue": "^2.5.16",
-    "vue-howler": "^0.7.0",
+    "vue-audio": "0.0.11",
+    "vue-fuse": "^1.5.2",
+    "vue-progress": "^0.2.1",
     "vue-progress-path": "0.0.2",
-    "vue-router": "^3.0.1",
-    "vue-simple-progress": "^1.1.0",
-    "vue2-circle-progress": "^1.2.3"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-service": "^3.0.0-beta.16",
+    "cypress": "^3.0.1",
     "vue-template-compiler": "^2.5.16"
   },
   "postcss": {

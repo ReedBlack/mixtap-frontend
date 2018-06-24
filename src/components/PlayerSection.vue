@@ -1,25 +1,27 @@
 <template>
     <section>
-        <h1>your mixes</h1>
+        <h3>your mixes</h3>
         <ul>
-          <audio-player v-for="mix in mixes.mixtables" :sources="audioSources" :loop="false" :mix="mix" :key="mix.DJ"></audio-player>
+          <AudioPlayer v-for="mix in mixes.mixtables" :mixes="mixes" :loop="false" :mix="mix" :key="mix.DJ"></AudioPlayer>
         </ul>
     </section>
 </template>
 
 <script>
-import AudioPlayer from "@/components/audio-player.vue";
+import AudioPlayer from "@/components/AudioPlayer.vue";
 
 export default {
   components: {
     AudioPlayer
   },
-  data() {
-    return {
-      audioSources: []
-    };
-  },
 
   props: ["mixes", "submitMix", "mix"]
 };
 </script>
+
+<style scoped>
+h3 {
+  margin-top: 3%;
+  margin-left: 65%;
+}
+</style>

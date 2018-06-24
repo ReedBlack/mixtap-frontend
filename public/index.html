@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
   <title>mixtap</title>
 </head>
 
@@ -15,6 +16,20 @@
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+
+  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA9NrKmucLbDg3jX3QloDMHTGQLdB_X1S4",
+      authDomain: "mixtap-dj.firebaseapp.com",
+      databaseURL: "https://mixtap-dj.firebaseio.com",
+      projectId: "mixtap-dj",
+      storageBucket: "",
+      messagingSenderId: "627466354571"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 
 </html>
