@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style>
+<style>cod
 .nav {
   position: relative;
   margin-bottom: 0;

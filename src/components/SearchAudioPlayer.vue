@@ -114,6 +114,7 @@ export default {
 .title-audio {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .dj-name {
@@ -169,14 +170,11 @@ export default {
 @media only screen and (max-width: 600px) {
   #search-player {
     width: 94%;
+    margin-left: 11px;
   }
 
   .audio-controls {
     width: 290px;
-  }
-
-  .likes {
-    margin-left: -60px;
   }
 }
 </style>

@@ -8,12 +8,12 @@
         <audio class="audio-controls" :src="mix.Mixlink" controls></audio>
       </div> 
       <div class="title-dropdown">
+        <small class="likes">likes: {{mix.Likes}}</small>
         <b-dropdown id="ddown-sm" size="sm" class="m-5">
           <b-dropdown-item-button @click="deleteMix()">Delete</b-dropdown-item-button>
           <b-dropdown-item-button @click="likeMix()">Like Mix</b-dropdown-item-button>
           <b-dropdown-item-button>Be Groovy</b-dropdown-item-button>
         </b-dropdown>
-        <small class="likes">likes: {{mix.Likes}}</small>
       </div>
    </li>
   </div>
@@ -61,8 +61,8 @@ export default {
 <style>
 .title-audio {
   display: flex;
-  flex-direction: row;
-
+  flex-direction: column;
+  justify-content: space-between;
   width: 65%;
 }
 .dj-name {
@@ -73,11 +73,8 @@ export default {
 
 .likes {
   height: 25px;
-}
-
-.m-5 {
-  margin-right: 0px;
-  margin-bottom: 20px;
+  align-self: flex-end;
+  margin-right: 25px;
 }
 
 .mix-title {
@@ -88,8 +85,8 @@ export default {
 
 .title-dropdown {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .player:hover,
@@ -104,12 +101,13 @@ export default {
 }
 
 .audio-controls {
-  width: 100%;
+  width: 125%;
   padding-bottom: 3px;
 }
 .player {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 90%;
   border: 2px solid gray;
   margin-top: -3%;
@@ -150,15 +148,18 @@ export default {
 
 @media only screen and (max-width: 600px) {
   #player {
-    width: 92%;
+    width: 94%;
+    margin-left: 11px;
   }
 
   .audio-controls {
     width: 270px;
   }
+}
 
-  .likes {
-    margin-left: -60px;
-  }
+#ddown-sm {
+  align-self: flex-end;
+  height: 40px;
+  width: 30px;
 }
 </style>

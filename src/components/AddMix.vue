@@ -9,7 +9,7 @@
             <form enctype="multipart/formdata" id="uploadForm" @submit.prevent="uploadMix">
             <h2>{{this.post}}</h2>
             <label for="audio">Upload your mix here</label>
-            <input type="file" name="audio" id="audio">
+            <input type="file" @change="onFileSelected" name="audio" id="audio">
             <input class="s-page-button" type="submit" name="submit" id="submit" value="Upload File">
             </form>
 
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import VueProgress from "vue-progress";
 export default {
   name: "AddMix",
@@ -35,6 +36,7 @@ export default {
   data() {
     return {
       audioUrl: "",
+      selectedFile: null,
       mix: {
         DJ: "",
         Title: "",
@@ -71,19 +73,41 @@ export default {
       this.audioURL = "";
       console.log("i'm working");
     },
-    uploadMix(event) {
-      console.log(new FormData(event.target));
-      event.stopPropagation();
-      fetch("https://mixtap.herokuapp.com/upload", {
-        method: "POST",
-        body: new FormData(event.target),
-        "Content-type": "multipart/form-data"
-      })
-        .then(response => response.json())
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    uploadMix() {
+      const fd = new FormData();
+      fd.append("audioUrl", this.selectedFile, this.selectedFile.name);
+      axios
+        .post("https://mixtap.herokuapp.com/upload", fd, {
+          method: "POST",
+          body: new FormData(event.target),
+          "Content-type": "multipart/form-data",
+          onUploadProgress: uploadEvent => {
+            console.log(
+              "Upload Progress: " +
+                Math.round(uploadEvent.loaded / uploadEvent.total * 100) +
+                "%"
+            );
+          }
+        })
         .then(response => (this.mix.Mixlink = response.audioUrl))
         .then(() => alert("Mix Uploaded. Don't forget to submit it"));
     }
   }
+  // uploadMix(event) {
+  //   console.log(new FormData(event.target));
+  //   event.stopPropagation();
+  //   fetch("https://mixtap.herokuapp.com/upload", {
+  //     method: "POST",
+  //     body: new FormData(event.target),
+  //     "Content-type": "multipart/form-data"
+  //   })
+  //     .then(response => response.json())
+  //     .then(response => (this.mix.Mixlink = response.audioUrl))
+  //     .then(() => alert("Mix Uploaded. Don't forget to submit it"));
+  // }
 };
 </script>
 

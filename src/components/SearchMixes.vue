@@ -57,20 +57,6 @@ export default {
 
 <style>
 .search-bar {
-  margin-left: 2%;
-}
-
-@media only screen and (max-width: 600px) {
-  #favplayer {
-    width: 94%;
-  }
-
-  .audio-controls {
-    width: 270px;
-  }
-
-  .likes {
-    margin-left: -60px;
-  }
+  margin-left: 3%;
 }
 </style>

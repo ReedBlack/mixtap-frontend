@@ -1,13 +1,11 @@
 <template>
 
   <div class="home">
-     <video loop muted autoplay class="fullscreen-bg__video">
-       
-        <source src="Person Playing a Music.mp4" type="video/mp4">
-    
-    </video>
-    <div class="div-over-vid"></div>
-    <div class="main-section">
+      <div class="fullscreen-bg" style="position: fixed; z-index: -99; width: 100%; height: 100%">
+         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/g_GhA5OAaLM?autoplay=1&controls=0&showinfo=0&autohide=1&playlist=g_GhA5OAaLM&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="div-over-vid"></div>
+      <div class="main-section">
       <header class="home-logo">
         <h1 class="logo-text" src="mixtap.png">mixtap</h1>
     
@@ -25,10 +23,10 @@
         <h2>Welcome to Mixtap</h2>
         <h3>Your portal to new favorites and new fans</h3>
 
-        <p>Providing DJ's with unfiltered access to fans across the globe based on targeted genres, not popularity. For music fans, be prepared to find exposure to mixes and new music from sources you otherwise would have never found.</p>
+        <p>Providing DJs with unfiltered access to fans across the globe based on targeted genres, not popularity. For music fans, be prepared to find exposure to mixes and new music from sources you otherwise would have never found.</p>
 
         <h5>DJs -</h5>
-        <p>Get exposure to your mixes based solely on finding the right audience. Music doesn't always need to be a popularity contest. Sure, usrs can "like" your mixes, but only you can see those likes for feedback purposes. When posting mixes, make sure you offer plenty of tags - tag the appropriate genres, settings, and artists associated with your mix so that it can be dynamically searched for among users seeking that good shit.</p>
+        <p>Get exposure to your mixes based solely on finding the right audience. Music doesn't always need to be a popularity contest. Users can "like" your mixes, but only you can see those likes. When posting mixes, make sure you offer plenty of tags - tag the appropriate genres, settings, and artists associated with your mix so that it can be dynamically searched for among users seeking that good shit.</p>
         <h5>Party People -</h5>
         <p>Play around with how you type in your searches. Try unique combinations of moods, genres, and artists to find a mix tailored to you.</p>
       </main>
@@ -154,7 +152,7 @@ nav {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-left: 2%;
+  margin-left: 3%;
 }
 
 @keyframes rot {

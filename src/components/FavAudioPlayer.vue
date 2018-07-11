@@ -13,7 +13,7 @@
           <b-dropdown-item-button @click="likeMix()">Like Mix</b-dropdown-item-button>
           <b-dropdown-item-button @click="heardMix()">Mark as Heard</b-dropdown-item-button>
         </b-dropdown>
-          <small v-show="favmix.Heard" class="likes">heard</small>
+          <small v-show="favmix.H3eard" class="likes">heard</small>
       </div>
       
  
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     deleteMix() {
-      return fetch(this.API_URL_DELETE, {
+      return fetch(this.API_URL_FAV, {
         method: "DELETE"
       }).then(() => this.favmixes.splice(this.favmix, 1));
     },
@@ -113,6 +113,7 @@ export default {
 @media only screen and (max-width: 600px) {
   #favplayer {
     width: 94%;
+    margin-left: 11px;
   }
 }
 </style>

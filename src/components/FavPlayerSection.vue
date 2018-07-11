@@ -2,7 +2,7 @@
     <section>
         <h3>your favorites</h3>
         <ul>
-          <FavAudioPlayer v-for="favmix in favmixes"  :favmix="favmix" :favmixes="favmixes" :key="favmix.DJ" :getFavorites="getFavorites"></FavAudioPlayer>
+          <FavAudioPlayer v-for="favmix in favmixes"  :favmix="favmix" :favmixes="favmixes" :key="favmix.id" :getFavorites="getFavorites"></FavAudioPlayer>
         </ul>
     </section>
 </template>

@@ -10,7 +10,7 @@
         <div class="links two">
           <router-link class="link-text" to="/partypeople">Party People</router-link> 
         </div>
-          <a type="link" class="links link-text" @click.prevent="toggleForm">Add a Mix</a> 
+          <a class="link-text" @click.prevent="toggleForm">Add a Mix</a> 
         <div class="add-mix-section">
           <AddMix class="mixform" :addMix="addMix" :mixes="mixes" v-show="displayForm"/>
         </div>
@@ -54,7 +54,8 @@ export default {
         console.log(res);
         this.mixes = res;
       });
-  }
+  },
+  
 };
 </script>
 
