@@ -76,38 +76,40 @@ export default {
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
     },
-    uploadMix() {
-      const fd = new FormData();
-      fd.append("audioUrl", this.selectedFile, this.selectedFile.name);
-      axios
-        .post("https://mixtap.herokuapp.com/upload", fd, {
-          method: "POST",
-          body: new FormData(event.target),
-          "Content-type": "multipart/form-data",
-          onUploadProgress: uploadEvent => {
-            console.log(
-              "Upload Progress: " +
-                Math.round(uploadEvent.loaded / uploadEvent.total * 100) +
-                "%"
-            );
-          }
-        })
+    //   uploadMix() {
+    //     const fd = new FormData();
+    //     fd.append("audioUrl", this.selectedFile, this.selectedFile.name);
+    //     axios
+    //       .post("https://mixtap.herokuapp.com/upload", fd, {
+    //         method: "POST",
+    //         body: new FormData(event.target),
+    //         "Content-type": "multipart/form-data",
+    //         onUploadProgress: uploadEvent => {
+    //           console.log(
+    //             "Upload Progress: " +
+    //               Math.round(uploadEvent.loaded / uploadEvent.total * 100) +
+    //               "%"
+    //           );
+    //         }
+    //       })
+    //       .then(response => (this.mix.Mixlink = response.audioUrl))
+    //       .then(() => alert("Mix Uploaded. Don't forget to submit it"));
+    //   }
+    //  },
+
+    uploadMix(event) {
+      console.log(new FormData(event.target));
+      event.stopPropagation();
+      fetch("https://mixtap.herokuapp.com/upload", {
+        method: "POST",
+        body: new FormData(event.target),
+        "Content-type": "multipart/form-data"
+      })
+        .then(response => response.json())
         .then(response => (this.mix.Mixlink = response.audioUrl))
         .then(() => alert("Mix Uploaded. Don't forget to submit it"));
     }
   }
-  // uploadMix(event) {
-  //   console.log(new FormData(event.target));
-  //   event.stopPropagation();
-  //   fetch("https://mixtap.herokuapp.com/upload", {
-  //     method: "POST",
-  //     body: new FormData(event.target),
-  //     "Content-type": "multipart/form-data"
-  //   })
-  //     .then(response => response.json())
-  //     .then(response => (this.mix.Mixlink = response.audioUrl))
-  //     .then(() => alert("Mix Uploaded. Don't forget to submit it"));
-  // }
 };
 </script>
 
